@@ -1,6 +1,19 @@
 CREATE TABLE IF NOT EXISTS CUSTOMER (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    id BIGINT IDENTITY PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
     gender VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS ADDRESS (
+    id BIGINT IDENTITY PRIMARY KEY,
+    city VARCHAR(255) NOT NULL,
+    complement VARCHAR(255),
+    federative_unit VARCHAR(2) NOT NULL,
+    neighborhood VARCHAR(255) NOT NULL,
+    number INT,
+    street VARCHAR(255) NOT NULL,
+    zip_code VARCHAR(255) NOT NULL,
+    customer_id BIGINT NOT NULL,
+    FOREIGN KEY (customer_id) references CUSTOMER(id)
 );
